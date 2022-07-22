@@ -6,7 +6,7 @@ from XYZMotors4.OneMotor.MathMotor.MathMotor import MathMotor
 from XYZMotors4.OneMotor.RealMotor.RealMotor import RealMotor
 from XYZMotors4.Utils.Conf.MotorConf import Conf
 from XYZMotors4.Utils.Signals import Signals
-from XYZUtil4.config.config_motor import ConfigMotor
+from XYZUtil4.config.config_screen_motor import ConfigScreenMotor
 
 
 class OneMotor:
@@ -14,7 +14,7 @@ class OneMotor:
     def __init__(self, bot_id: int, cid: int, sign: Signals):
         self._bot_id = bot_id
         self._cid = cid
-        self._conf = Conf(conf_path=ConfigMotor.get_motor_ini_path(bot_id=bot_id, cid=cid))
+        self._conf = Conf(conf_path=ConfigScreenMotor.get_motor_ini_path(bot_id=bot_id, cid=cid))
         self._real = RealMotor(bot_id=bot_id, cid=cid, conf=self._conf, sign=sign)
         while True:
             ip, port = self._real.get_udp_addr()
