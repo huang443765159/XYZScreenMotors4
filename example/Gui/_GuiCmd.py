@@ -32,6 +32,8 @@ class GuiCmd:
         self._ui.btn_motors_stop_all.clicked.connect(self._stop_all)
         self._ui.btn_cid_reset.clicked.connect(self._reset)
         self._ui.btn_brush_once.clicked.connect(self._brush_once)
+        self._ui.btn_tv_out.clicked.connect(self._devices.models.tv_out)
+        self._ui.btn_tv_in.clicked.connect(self._devices.models.tv_in)
         for cid in self._motors.get_cid_list():
             self._motors.get_one_motor(cid=cid).set_mode(CODEC.MODE.POS)
         self.sign = self._motors.sign

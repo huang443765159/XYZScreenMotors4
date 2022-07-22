@@ -1,7 +1,7 @@
 import struct
 
 from XYZUtil4.network.UDP import UDP
-from XYZScreenMotors4.Utils.Codec import CODEC
+from XYZScreenMotors4.Utils.BrushCodec import CODEC
 
 
 # IP/PORT 从utils的config里读取

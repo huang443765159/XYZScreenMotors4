@@ -5,8 +5,9 @@ from XYZUtil4.network.UDP import UDP
 from XYZUtil4.config.config_screen_motor import ConfigScreenMotor
 from XYZUtil4.config import config_screen_motor
 
-from XYZMotors4.Utils.Signals import Signals
-from XYZMotors4.Utils.Conf.BotConf import Conf
+from XYZScreenMotors4.Utils.Signals import Signals
+from XYZScreenMotors4.Utils.Conf.BotConf import Conf
+from XYZScreenMotors4.Utils.Codec import CODEC
 
 from XYZScreenMotors4.OneMotor.OneMotor import OneMotor
 from XYZScreenMotors4.OneMotor.OneWiper import OneWiper
@@ -81,3 +82,26 @@ class ScreenMotors:
     def exit(self):
         for motor in self._motors.values():
             motor.exit()
+
+    def tv_out(self):
+        print("tv out")
+        motor = self.get_one_motor(cid=1)
+        pos_tar = max(motor.get_pos_range())
+        motor.move_to_pos(pos_tar=pos_tar)
+
+    def tv_in(self):
+        motor = self.get_one_motor(cid=1)
+        pos_tar = min(motor.get_pos_range())
+        motor.move_to_pos(pos_tar=pos_tar)
+
+    def tv_org(self):
+        motor = self.get_one_motor(cid=1)
+        motor.org()
+
+    def tv_ena_on(self):
+        motor = self.get_one_motor(cid=1)
+        motor.set_mode(CODEC.MODE.POS)
+
+    def tv_ena_off(self):
+        motor = self.get_one_motor(cid=1)
+        motor.set_mode(CODEC.MODE.OFF)

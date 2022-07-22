@@ -1,7 +1,5 @@
-import struct
-
 from XYZScreenMotors4.Utils._Network import Network
-from XYZScreenMotors4.Utils.Codec import CODEC
+from XYZScreenMotors4.Utils.BrushCodec import CODEC
 
 
 class OneWiper:

@@ -111,11 +111,6 @@ class OneMotor:
 
     @staticmethod
     def _working(bot_id: int, cid: int, conf: Conf, real_motor_port: int, process_event: multiprocessing.Event):
-        # while True:
-        #     ip, port = self._real.get_udp_addr()
-        #     if port != 0:
-        #         break
-        #     time.sleep(0.02)
         math_motor = MathMotor(bot_id=bot_id, cid=cid, conf=conf, real_motor_port=real_motor_port)
         process_event.wait()
         math_motor.exit()
