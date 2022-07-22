@@ -3,8 +3,8 @@ from PyQt5.QtCore import QObject, pyqtSignal
 
 from XYZUtil4.config.config_screen_motor import ConfigScreenMotor
 
-from XYZMotors3.Utils.Codec import CODEC
-from XYZMotors3.Utils.Const import CONST
+from XYZMotors4.Utils.Codec import CODEC
+from XYZMotors4.Utils.Const import CONST
 
 from example.Utils import QTools
 from example.Devices.Devices import Devices
@@ -32,7 +32,6 @@ class ROW:
 
 
 class GuiAttr(QObject):
-
     # sign_pos_spd = pyqtSignal()
     sign_mode = pyqtSignal(str, int, int, bytes)  # bot_type, bot_id, cid, mode
     sign_pos_spd = pyqtSignal(str, str, int, int, float, float, float)  # source, bot_type, bot_id, cid, ts, pos, spd
@@ -43,7 +42,7 @@ class GuiAttr(QObject):
     def __init__(self, ui: Ui_MainWindow):
         super().__init__()
         self._devices = Devices()
-        self._motors = self._devices.motors
+        self._motors = self._devices.models
         self._sign = self._motors.sign
         self._ui = ui
         QTools.table_init(table=self._ui.table_motors, select_as_columns=True, no_edit=True)
@@ -59,12 +58,13 @@ class GuiAttr(QObject):
         self._sign.temperature_humidity.connect(self.sign_temperature_humidity.emit)
         self._update()
 
-    def _update(self, bot_id: int = 0):
+    def _update(self):
+        bot_id = self._devices.models._bot_id
         cid_list = ConfigScreenMotor().get_cid_list(bot_id=bot_id)
         for col in range(self._ui.table_motors.columnCount()):
             cid = col + 1
             if cid in cid_list:
-                for row in  range(self._ui.table_motors.rowCount()):
+                for row in range(self._ui.table_motors.rowCount()):
                     item = self._ui.table_motors.item(row, col)
                     item.setForeground(QColor(255, 255, 255))
                     item.setText('')

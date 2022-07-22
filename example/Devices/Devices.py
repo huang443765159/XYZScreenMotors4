@@ -1,4 +1,4 @@
-from XYZMotors3.Utils.Singleton import singleton
+from XYZUtil4.tools.for_class import singleton
 
 from XYZScreenMotors4.ScreenMotors import ScreenMotors
 
@@ -7,7 +7,7 @@ from XYZScreenMotors4.ScreenMotors import ScreenMotors
 class Devices:
 
     def __init__(self):
-        self.motors = ScreenMotors()
+        self.models = ScreenMotors()
 
     def exit(self):
-        self.motors.exit()
+        self.models.exit()

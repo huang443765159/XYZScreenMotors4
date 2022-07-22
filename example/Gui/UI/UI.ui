@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>590</width>
-    <height>385</height>
+    <width>580</width>
+    <height>390</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -606,7 +606,7 @@
        <string>OFF</string>
       </property>
      </widget>
-     <widget class="QToolButton" name="btn_load_dance">
+     <widget class="QToolButton" name="btn_brush_once">
       <property name="geometry">
        <rect>
         <x>320</x>
@@ -633,10 +633,10 @@
        </font>
       </property>
       <property name="text">
-       <string>LOAD_DANCE</string>
+       <string>BRUSH_ONCE</string>
       </property>
      </widget>
-     <widget class="QToolButton" name="btn_start_dance">
+     <widget class="QToolButton" name="btn_tv_in">
       <property name="geometry">
        <rect>
         <x>450</x>
@@ -663,7 +663,7 @@
        </font>
       </property>
       <property name="text">
-       <string>START_DANCE</string>
+       <string>TV_IN</string>
       </property>
      </widget>
      <widget class="QCheckBox" name="motors_link">
@@ -726,66 +726,6 @@
         <height>31</height>
        </rect>
       </property>
-      <widget class="QRadioButton" name="cid_2">
-       <property name="geometry">
-        <rect>
-         <x>60</x>
-         <y>0</y>
-         <width>60</width>
-         <height>18</height>
-        </rect>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>25</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>100</width>
-         <height>16777215</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>10</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>CID_2</string>
-       </property>
-      </widget>
-      <widget class="QRadioButton" name="cid_3">
-       <property name="geometry">
-        <rect>
-         <x>120</x>
-         <y>0</y>
-         <width>60</width>
-         <height>18</height>
-        </rect>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>25</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>100</width>
-         <height>16777215</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>10</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>CID_3</string>
-       </property>
-      </widget>
       <widget class="QRadioButton" name="cid_1">
        <property name="geometry">
         <rect>
@@ -1204,7 +1144,7 @@
        <double>9999.000000000000000</double>
       </property>
      </widget>
-     <widget class="QToolButton" name="btn_start_dance_all">
+     <widget class="QToolButton" name="btn_tv_out">
       <property name="geometry">
        <rect>
         <x>450</x>
@@ -1231,7 +1171,7 @@
        </font>
       </property>
       <property name="text">
-       <string>LOAD_DANCE_ALL</string>
+       <string>TV_OUT</string>
       </property>
      </widget>
     </widget>
