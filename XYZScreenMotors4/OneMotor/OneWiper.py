@@ -19,7 +19,7 @@ class OneWiper:
 
     # API
     def brush_once(self):
-        if not self._is_loop and self._link:
+        if self._link:
             self._network.send(data=CODEC.CMD)
 
     def brush_loop(self):
