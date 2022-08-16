@@ -32,6 +32,7 @@ class GuiCmd:
         self._ui.btn_motors_stop_all.clicked.connect(self._stop_all)
         self._ui.btn_cid_reset.clicked.connect(self._reset)
         self._ui.btn_brush_once.clicked.connect(self._brush_once)
+        self._ui.btn_brush_loop.clicked.connect(self._brush_loop)
         self._ui.btn_tv_out.clicked.connect(self._devices.models.tv_out)
         self._ui.btn_tv_in.clicked.connect(self._devices.models.tv_in)
         for cid in self._motors.get_cid_list():
@@ -80,14 +81,17 @@ class GuiCmd:
             pos_tar = self._ui.pos_tar.value()
             one_motor.move_to_pos(pos_tar=pos_tar)
 
-    def _stop_all(self):
-        self._motors.stop()
-        self._thread_switch = False
-
     def _brush_once(self):
         self._motors.wiper.brush_once()
+
+    def _brush_loop(self):
+        self._motors.wiper.brush_loop()
 
     def _reset(self):
         one_motor = self._get_motor_cur()
         if one_motor is not None:
             one_motor.reset()
+
+    def _stop_all(self):
+        self._motors.stop()
+        self._thread_switch = False

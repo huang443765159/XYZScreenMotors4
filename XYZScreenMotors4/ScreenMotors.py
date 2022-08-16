@@ -1,18 +1,16 @@
-import struct
 from typing import Dict, List, Optional
 
 from XYZUtil4.network.UDP import UDP
-from XYZUtil4.config.config_screen_motor import ConfigScreenMotor
 from XYZUtil4.config import config_screen_motor
+from XYZUtil4.config.config_screen_motor import ConfigScreenMotor
 
+from XYZScreenMotors4.Utils.CONST import CONST
+from XYZScreenMotors4.Utils.Codec import CODEC
 from XYZScreenMotors4.Utils.Signals import Signals
 from XYZScreenMotors4.Utils.Conf.BotConf import Conf
-from XYZScreenMotors4.Utils.Codec import CODEC
 
 from XYZScreenMotors4.OneMotor.OneMotor import OneMotor
 from XYZScreenMotors4.OneMotor.OneWiper import OneWiper
-
-WIPER_ADDR = ('192.168.50.80', 54188)
 
 
 class ScreenMotors:
@@ -25,7 +23,7 @@ class ScreenMotors:
         self._cid_list = self._config.get_cid_list(bot_id=bot_id)
         self._motors = {cid: OneMotor(bot_id=bot_id, cid=cid, sign=self.sign) for cid in
                         self._cid_list}  # type: Dict[int, OneMotor]
-        self.wiper = OneWiper(wiper_id=1, mcu_addr=WIPER_ADDR)
+        self.wiper = OneWiper(wiper_id=1, mcu_addr=CONST.WIPER_ADDR)
         self._conf = Conf(conf_path=ConfigScreenMotor().get_bot_ini_path(bot_id=bot_id))
         # NETWORK
         self._udp = UDP(is_nuc=True)
@@ -58,6 +56,7 @@ class ScreenMotors:
     def set_link(self, link: bool):
         for motor in self._motors.values():
             motor.set_link(link=link)
+        self.wiper.set_link(link=link)
 
     def get_link(self) -> bool:
         link = False
@@ -78,6 +77,7 @@ class ScreenMotors:
     def stop(self):
         for motor in self._motors.values():
             motor.stop()
+        self.wiper.stop()
 
     def exit(self):
         for motor in self._motors.values():

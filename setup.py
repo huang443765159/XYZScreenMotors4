@@ -4,7 +4,7 @@ import setuptools
 setuptools.setup(
     name="XYZScreenMotors4",
     version="2022.06.07.16.05",
-    author="HuangKai",
+    author="LuZhiMing",
     url="https://github.com/WillEEEEEE/XYZScreenMotors4",
     packages=setuptools.find_packages(),
     classifiers=[

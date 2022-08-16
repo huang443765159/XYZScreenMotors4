@@ -1,5 +1,5 @@
-import multiprocessing
 import time
+import multiprocessing
 from typing import List, Tuple
 
 from XYZMotors4.OneMotor.MathMotor.MathMotor import MathMotor
@@ -25,6 +25,12 @@ class OneMotor:
         self._process = multiprocessing.Process(target=self._working,
                                                 args=(bot_id, cid, self._conf, port, self._process_event))
         self._process.start()
+
+    @staticmethod
+    def _working(bot_id: int, cid: int, conf: Conf, real_motor_port: int, process_event: multiprocessing.Event):
+        math_motor = MathMotor(bot_id=bot_id, cid=cid, conf=conf, real_motor_port=real_motor_port)
+        process_event.wait()
+        math_motor.exit()
 
     def get_bot_id(self) -> int:
         return self._bot_id
@@ -108,12 +114,6 @@ class OneMotor:
 
     def reset(self):
         self._real.reset()
-
-    @staticmethod
-    def _working(bot_id: int, cid: int, conf: Conf, real_motor_port: int, process_event: multiprocessing.Event):
-        math_motor = MathMotor(bot_id=bot_id, cid=cid, conf=conf, real_motor_port=real_motor_port)
-        process_event.wait()
-        math_motor.exit()
 
     def exit(self):
         self._process_event.set()
